@@ -1,6 +1,6 @@
 package com.sample.stockexchange.controller;
 
-import com.google.common.base.Splitter;
+
 import com.sample.stockexchange.entity.Order;
 import com.sample.stockexchange.entity.OrderEntry;
 import com.sample.stockexchange.entity.OrderType;
@@ -29,9 +29,7 @@ public class CLIController {
      * <buy/sell> <qty> <price>
      */
     public Order parse(String orderLine) {
-        Splitter spaceSplitter = Splitter.on(' ').omitEmptyStrings().trimResults();
-        Iterator<String> tokenItr = spaceSplitter.split(orderLine).iterator();
-
+        Iterator<String> tokenItr =  Arrays.stream(orderLine.split("\\s+")).iterator();
         String orderId = tokenItr.next();
 
         String timeStr = tokenItr.next();
